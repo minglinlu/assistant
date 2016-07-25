@@ -1,0 +1,53 @@
+div(ui-content-for='title')
+    span 假条详情
+div(ui-content-for='uiSidebarLeft')
+    a.btn(href='javascript:history.go(-1)')
+        i.fa.fa-arrow-left 返回
+.scrollable
+    .scrollable-content.section
+        table.table.table-bordered.table-condensed.table-striped.table-responsive(style="word-break:break-all; word-wrap:break-all;")
+            tbody
+                tr
+                    th 姓名
+                    td {{UserInfo.nickname}}
+                    th 学号
+                    td {{UserInfo.sid}}
+                tr
+                    th 专业
+                    td {{UserInfo.department}}
+                    th 班级
+                    td {{UserInfo.class}}
+                tr
+                    th 审批结果
+                    td(colspan=3) {{UserInfo.submitResult|leaveFormat}}
+                tr
+                    th 创建时间
+                    td(colspan=3) {{UserInfo.createdTime*1000|date:'yyyy/MM/dd HH:mm'}}
+                tr
+                    th 开始时间
+                    td(colspan=3) {{UserInfo.leaveTime.from*1000|date:'yyyy/MM/dd HH:mm'}}
+                tr
+                    th 结束时间
+                    td(colspan=3) {{UserInfo.leaveTime.to*1000|date:'yyyy/MM/dd HH:mm'}}
+        table.table.table-striped.table-bordered(style="word-break:break-all; word-wrap:break-all;")
+            tr
+                th.col-xs-3 请假事由
+                td {{UserInfo.leaveReason}}
+            tr
+                th.col-xs-3 审批说明
+                td {{UserInfo.submitRemark}}
+        .input-group
+            .input-group-btn
+                button.btn.btn-default.btn-block.dropdown-toggle(type='button'
+                style='border-radius: 7px;' ui-toggle='dropMenu') {{typename[info.submitResult]}}
+                    span.caret
+                ul.dropdown-menu(ui-if='dropMenu' ui-state='dropMenu' ui-turn-off='dropMenu')
+                    li(ng-repeat="(key,val) in typename"
+                    style='border-bottom: solid 0.5px rgb(221, 221, 221);' ng-hide='key=="default"')
+                        a(ng-click='info.submitResult=key') {{val}}
+        .form-group
+            label 审批说明
+            textarea.form-control(ng-model='info.submitRemark')
+
+        button.btn.btn-success.btn-block(ng-click='saveLeave(info)') 保存
+

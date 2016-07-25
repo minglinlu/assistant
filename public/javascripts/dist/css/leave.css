@@ -1,0 +1,70 @@
+#form_datetime {
+    font-size:21px;
+}
+
+.btn-min-caret {
+    padding:1px 2px;
+    width:25px;
+    height: 16px ;
+}
+.btn-min-caret span {
+    height: 16px ;
+}
+.self-hide {
+    display:none;
+}
+
+.glyphicon  {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-arrow-left:before {
+    content: "\f060";
+}
+
+.glyphicon-arrow-right:before {
+    content: "\f061";
+}
+.icon-arrow-left:before {
+    content: "\f060";
+}
+
+.icon-arrow-right:before {
+    content: "\f061";
+}
+
+.today {
+    border:1px solid  #bce8f1 !important;
+}
+
+.switch {
+    display:table-cell;
+}
+.datetimepicker {
+    width: 90%;
+}
+.datetimepicker table {
+    width: 100%;
+}
+
+alert-bar{
+    width:68%;
+    left:16%;
+    z-index: 1000;
+    position:fixed;
+}
+@keyframes fade-out {
+    100% {opacity: 0;}/*结束状态 透明度为1*/
+    80% {opacity: 0;}/*过渡状态 透明度为0*/
+    50% {opacity: 1;}/*初始状态 透明度为0*/
+}
+.alert{
+    margin:0;
+    animation: fade-out;
+    animation-duration:3s;
+}

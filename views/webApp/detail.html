@@ -1,0 +1,28 @@
+<div class="scrollable">
+    <div class="scrollable-content section">
+        <table class="table table-responsive">
+
+            <thead>
+            <tr>
+                <th>编辑</th>
+                <th>名</th>
+                <th>姓</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in chatUsers">
+                <td>
+                    <button class="btn btn-primary btn-block" ng-disabled="user.online">
+                        <span class="fa fa-pencil"></span>编辑
+                    </button>
+                </td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.online }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.online }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

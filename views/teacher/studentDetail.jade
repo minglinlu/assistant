@@ -1,0 +1,23 @@
+div(ui-content-for='title') 详细信息
+div(ui-content-for='uiSidebarLeft')
+    a.btn(href='javascript:history.go(-1)')
+        i.fa.fa-arrow-left 返回
+
+.scrollable
+    #loadPart.scrollable-header.section
+        i.fa.fa-spinner.fa-spin.loading-spinner
+        | 获取信息中...
+    .scrollable-content.section
+        table.table.table-striped.table-condenseda.table-bordered(
+        style="display:none;word-break:break-all; word-wrap:break-all;")
+            tbody
+                tr(ng-repeat='(key,val) in typename')
+                    th.col-xs-4.text-center {{val}}
+                    td  {{Details[key]}}
+        button.btn.btn-block.btn-success(ng-click="edit()") 编辑信息
+        a.btn.btn-info.btn-block(href='javascript:history.go(-1)') 返回
+
+
+
+
+

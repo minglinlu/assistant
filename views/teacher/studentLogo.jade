@@ -1,0 +1,29 @@
+div(ui-content-for='title')
+    span {{param.nickname}}-照片编辑
+div(ui-content-for='uiSidebarLeft')
+    a.btn(href='javascript:history.go(-1)')
+        i.fa.fa-arrow-left 返回
+.scrollable
+    .scrollable-content.section
+        .panel.panel-default
+            .panel-heading 照片
+            .panel-body
+                .file-item.thumbnail(ng-repeat='x in photos')
+                    img(ng-src='/uploadPic/{{x}}'
+                        style='border: solid 0.5px #BFB0B0;margin-bottom: 2px;')
+                    .btn.btn-default.btn-danger.btn-block(ng-click='delImg(x)') 删除
+                form.form-horizontal
+                    .form-group
+                        .col-md-2.control-label
+                        .controls.col-md-8
+                            p.help-block 你可以上传JPG、GIF或PNG格式的文件,文件大小不能超过
+                                strong 2M
+                                |,最多传三张照片。
+                    .form-group
+                        .col-md-2.control-label
+                        .controls.col-md-8.text-center
+                            #uploader-demo
+                                #fileList.uploader-list
+                                #filePicker 选择图片
+
+

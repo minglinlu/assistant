@@ -1,0 +1,35 @@
+div(ui-content-for='title') {{title}}
+.scrollable
+    .scrollable-content.section
+        form(role='form',name='myform',ng-submit='submitLeave(leaveInfo)')
+            .form-group
+                label(name='startTime') 开始时间:
+                input#startTime.form-control(name='startTime',
+                type='text',
+                placeholder='格式如:2016/01/01 00:00',
+                ng-model='leaveInfo.startTime',
+                check-date)
+                .help-block(ng-show='myform.startTime.$error.date')
+                    span.text-danger 请输入正确格式的开始时间
+            .form-group
+                label.control-label 结束时间:
+                input#endTime.form-control(name='endTime',
+                type='text',1
+                ng-model='leaveInfo.endTime',
+                placeholder='格式如:2016/01/01 00:00'
+                check-date)
+                .help-block(ng-show='myform.endTime.$error.date')
+                    span.text-danger 请输入正确格式的结束时间
+            .form-group
+                label.control-label 请假事由
+                .controls
+                    textarea.form-control(name='leaveReason',
+                    ng-model='leaveInfo.reason',
+                    rows='10',
+                    required)
+                .help-block(ng-show='myform.leaveReason.$invalid')
+                        span.text-danger 请输入请假事由
+            button.btn.btn-block.btn-success(
+            ng-disabled='myform.$invalid') {{submiting}}
+            button.btn.btn-block.btn-info(ng-show='title=="编辑假条"'
+            ng-click='cancelEdit()') 返回

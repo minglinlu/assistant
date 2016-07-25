@@ -1,0 +1,44 @@
+div(ui-content-for='title') 学生管理
+
+div(ui-content-for='uiSidebarLeft')
+    .btn.sidebar-toggle(ui-toggle='uiSidebarLeft')
+        i.fa.fa-bars
+.scrollable
+    .scrollable-header.section(style='padding:2px')
+        .input-group
+            .input-group-btn
+
+                button.btn.btn-default.dropdown-toggle(type='button',ui-toggle='dropMenu') {{typename[query.type]}}
+                    span.caret
+                ul.dropdown-menu(ui-if='dropMenu' ui-state='dropMenu' ui-turn-off='dropMenu')
+                    li(ng-repeat="(key,val) in typename"
+                    style='border-bottom: solid 0.5px rgb(221, 221, 221);')
+                        a(ng-click='query.type=key') {{val}}
+            input.form-control.search(type='text' placeholder='搜索' ng-model='query.msg' search='query.type')
+    .scrollable-content.section
+        table.table.table-strips
+            thead
+                th.text-center 学号
+                th.text-center 姓名
+                th.text-center 班级
+            tbody
+                tr(ng-repeat-start='item in pageItems[currentPage]' ng-click='toggleMenu($event)')
+                    td.text-center {{item.sid}}
+                    td.text-center {{item.nickname}}
+                    td.text-center {{item.class}}
+                tr.self-hide(ng-repeat-end)
+                    td(colspan=3 style='padding: 8px 0px')
+                        button.btn.btn-block.btn-success(ng-click='Details(item)') 查看信息
+                        button.btn.btn-block.btn-info(ng-click='editLogo(item)') 编辑照片
+    .scrollable-footer.section
+        nav
+            ul.pager
+                li(ng-class='{disabled:currentPage==0}')
+                    a(ng-click='prevPage()') 上一页
+                span {{currentPage+1}}/{{pageItems.length+(pageItems.length==0?1:0)}}
+                li(ng-class='{disabled:currentPage==pageItems.length-1}')
+                    a(ng-click='nextPage()') 下一页
+
+
+
+

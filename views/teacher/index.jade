@@ -1,0 +1,21 @@
+extends ../template/layout
+block append links
+    link(rel="stylesheet" href="/javascripts/teacher/style.css")
+    link(rel="stylesheet" href="/javascripts/dist/css/leave.css")
+    link(rel="stylesheet" href="/javascripts/dist/css/bootstrap-datetimepicker.css")
+    link(rel="stylesheet" href="/javascripts/webuploader/webuploader.css")
+block append scripts
+    script(src="/javascripts/teacher/index.js")
+    script(src="/javascripts/controller/utils.js")
+    script(src="/javascripts/teacher/controller/UserInfo.js")
+    script(src="/javascripts/teacher/controller/changePassword.js")
+    script(src="/javascripts/teacher/controller/studentManage.js")
+    script(src="/javascripts/teacher/controller/studentDetail.js")
+    script(src="/javascripts/teacher/controller/classManage.js")
+    script(src="/javascripts/teacher/controller/leaveManage.js")
+    script(src="/javascripts/dist/js/bootstrap-datetimepicker.js")
+    script(src="/javascripts/dist/js/locales/bootstrap-datetimepicker.zh-CN.js")
+    script(src="/javascripts/webuploader/webuploader.js")
+block sidebar
+    .sidebar.sidebar-left(ng-include="'sidebar'",ui-track-as-search-param='true')
+    alert-bar.alert_bar(type="tipService.type",message="tipService.message")

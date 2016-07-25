@@ -1,0 +1,21 @@
+div(ui-content-for='title') 编辑信息
+div(ui-content-for='uiSidebarLeft')
+    a.btn(href='javascript:history.go(-1)')
+        i.fa.fa-arrow-left 返回
+.scrollable
+    .scrollable-content.section
+        form(name='myForm')
+            .form-group
+                label 学号:
+                input.form-control(ng-model='Detail.sid' disabled='true')
+            .form-group(ng-repeat='(key,val) in inputName')
+                label {{val}}
+                input.form-control(ng-model='Detail[key]')
+            .form-group(ng-repeat='(key,val) in textName')
+                label {{val}}
+                textarea.form-control(ng-model='Detail[key]')
+            button.btn.btn-block.btn-success(ng-click='saveInfo(Detail)') {{submitting}}
+            a.btn.btn-block.btn-info(href='javascript:history.go(-1)') 返回
+
+
+

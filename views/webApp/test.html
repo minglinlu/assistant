@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <script src="/javascripts/dist/js/angular.js"></script>
+    <script src="/javascripts/dist/js/angular-route.js"></script>
+    <script src="/javascripts/dist/js/angular-resource.js"></script>
+    <!--<script src="script.js"></script>-->
+</head>
+<body  ng-app="myapp">
+<div ng-controller="ClockCtrl">
+    Current time is:
+</div>
+    <script>
+        var app = angular.module('myapp',['ngResource','ngRoute']);
+        app.factory('Notes',['$resource',function($resource){
+            return $resource('/UserInfo', null,
+                    {
+                        'update': { method:'POST',params:{phoneId:'test'},
+                            transformRequest:{test:'test'} }
+                    });
+        }]);
+        app.controller('ClockCtrl',['$scope','Notes',function($scope,Notes){
+                Notes.update();
+        }]);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+div(ui-content-for='title')
+    span 教师设置
+div(ui-content-for='uiSidebarLeft')
+    .btn.sidebar-toggle(ui-toggle='uiSidebarLeft')
+        i.fa.fa-bars
+.scrollable
+    .scrollable-content.section
+        form.form-horizontal(name='myform' ng-submit='submitInfo(userInfo)')
+            .form-group
+                label.col-md-2.control-label 昵称
+                .col-md-7
+                    input.form-control(type='text' name='nickname' ng-model='userInfo.nickname')
+            .form-group
+                label.col-md-2.control-label 性别
+                .col-md-7
+                    label.radio-inline
+                        input(type='radio' value='男' ng-model='userInfo.sex')
+                        |男
+                    label.radio-inline
+                        input(type='radio' value='女' ng-model='userInfo.sex')
+                        |女
+            .form-group
+                label.col-md-2.control-label 民族
+                .col-md-7
+                    input.form-control(type='text' name='nation' ng-model='userInfo.nation')
+            .form-group
+                label.col-md-2.control-label 出生年月
+                .col-md-7
+                    input#birthdate.form-control(type='text' name='birthdate'
+                    ng-model='userInfo.birthdate' check-date="userInfo")
+                    .help-block(ng-show='myform.birthdate.$error.date')
+                        span.text-danger 请输入正确格式的日期
+            .form-group
+                label.col-md-2.control-label QQ
+                .col-md-7
+                    input.form-control(type='text' name='qq' ng-model='userInfo.qq')
+            .form-group
+                label.col-md-2.control-label Email
+                .col-md-7
+                    input.form-control(type='text' nmae='email' ng-model='userInfo.email')
+            .form-group
+                label.col-md-2.control-label 手机
+                .col-md-7
+                    input.form-control(type='text' name='telephone' ng-model='userInfo.telephone')
+            .form-group
+                label.col-md-2.control-label 政治面貌
+                .col-md-7
+                    input.form-control(type='text' name='politicalStatus' ng-model='userInfo.politicalStatus')
+            .form-group
+                label.col-md-2.control-label 通讯地址
+                .col-md-7
+                    input.form-control(type='text' name='address' ng-model='userInfo.address')
+
+            button.btn.btn-block.btn-success(
+                ng-disabled='submitting=="提交中"||myform.birthdate.$error.date') {{submitting}}
+
+
+
+

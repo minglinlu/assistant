@@ -1,0 +1,107 @@
+<div ui-content-for="title">
+    <span>基本信息</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content section">
+        <form id="user-profile-form" class="form-horizontal" method="post" action="/SaveUserInfo">
+
+            <div class="form-group">
+                <label class="col-md-2 control-label">学号</label>
+                <div class="col-md-7 controls">
+                    <input disabled="true" type="text" id="user_sid" name="sid" class="form-control" ng-model="UserInfo.sid" >
+                </div>
+            </div>
+            <div class="form-group form-forIam-group form-notStudent-group">
+                <label class="col-md-2 control-label">姓名</label>
+                <div class="col-md-7 controls">
+                    <input type="text" id="user_nickname" name="nickname" class="form-control" ng-model="UserInfo.nickname">
+                </div>
+            </div>
+            <div class="form-group ">
+                <label class="col-md-2 control-label">政治面貌</label>
+                <div class="col-md-7 controls">
+                    <input type="text" id="user_politicalStatus" name="politicalStatus" class="form-control" ng-model="UserInfo.politicalStatus">
+                </div>
+            </div>
+            <div class="form-group ">
+                <label class="col-md-2 control-label">年级</label>
+                <div class="col-md-7 controls">
+                    <input type="text" id="user_grade" name="grade" class="form-control" ng-model="UserInfo.grade">
+                </div>
+            </div>
+            <div class="form-group ">
+                <label class="col-md-2 control-label">专业</label>
+                <div class="col-md-7 controls">
+                    <input disabled="true" type="text" id="user_department" name="department" class="form-control" ng-model="UserInfo.department">
+                </div>
+            </div>
+            <div class="form-group ">
+                <label class="col-md-2 control-label">生源地</label>
+                <div class="col-md-7 controls">
+                    <input type="text" id="user_from" name="from" class="form-control" ng-model="UserInfo.from">
+                </div>
+            </div>
+            <div class="form-group ">
+                <label class="col-md-2 control-label">宿舍</label>
+                <div class="col-md-7 controls">
+                    <input type="text" id="user_dormitory" name="dormitory" class="form-control" ng-model="UserInfo.dormitory">
+                </div>
+            </div>
+            <div class="form-group ">
+                <label class="col-md-2 control-label">班主任</label>
+                <div class="col-md-7 controls">
+                    <input disabled="true" type="text" id="user_tid" name="tid" class="form-control" ng-model="UserInfo.tid">
+                </div>
+            </div>
+            <div class="form-group ">
+                <label class="col-md-2 control-label">是否担任学生干部</label>
+                <div class="col-md-7 controls">
+                    <input type="text" id="user_post" name="post" class="form-control" ng-model="UserInfo.post">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">学生特点</label>
+                <div class="col-md-7 controls">
+                    <textarea name="specialty" rows="10" id="user_specialty" class="form-control" ng-model="UserInfo.specialty"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">家庭情况</label>
+                <div class="col-md-7 controls">
+                    <textarea name="financial" rows="10" id="user_financial" class="form-control" ng-model="UserInfo.financial"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">备注</label>
+                <div class="col-md-7 controls">
+                    <textarea name="comment" rows="10" id="user_comment" class="form-control"ng-model="UserInfo.comment"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-7 col-md-offset-2">
+                    <button id="profile-save-btn"   type="submit" class="btn btn-primary btn-block">保存</button>
+                </div>
+            </div>
+        </form>
+
+
+        <!--<table class="table table-responsive">
+
+            <tbody>
+            <tr>
+                <p>姓名:</p>
+                <input class="form-control"type="text"></>
+
+            </tr>
+            <tr>
+                <p>姓名:</p>
+                <td><input class="form-control"type="text"></td>
+
+            </tr>
+            </tbody>
+        </table>-->
+    </div>
+
+</div>

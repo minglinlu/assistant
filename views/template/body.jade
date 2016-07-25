@@ -1,0 +1,16 @@
+body(ng-app="myApp",ng-controller="MainController")
+    block sidebar
+
+    block content
+        .app(ng-swipe-right="Ui.turnOn('uiSidebarLeft')" ng-swipe-left="Ui.turnOff('uiSidebarLeft')")
+            .navbar.navbar-app.navbar-absolute-top
+                .navbar-brand.navbar-brand-center(ui-yield-to='title')
+                .btn-group.pull-left(ui-yield-to='uiSidebarLeft')
+                .btn-group.pull-right(ui-yield-to='navbarAction')
+            .app-body(ng-class='{loading:loading}')
+                .app-content-loading(ng-show='loading')
+                    i.fa.fa-spiner.fa-spin.loading-spinner
+                .app-content
+                    ng-view
+
+

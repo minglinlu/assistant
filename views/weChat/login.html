@@ -1,0 +1,52 @@
+<!--<div ui-content-for="title">
+    <span>信息系统登录</span>
+</div>
+
+
+<div class="scrollable">
+    <div class="scrollable-content section">
+        <div  class="alert {{notice.type}}" ng-show=notice.show >
+            <a  class="close" ng-click="showMsg()" data-dismiss="alert">&times;</a>
+            {{notice.msg}}
+        </div>
+        <form role="form" ng-submit=login(user) name="myform">
+            <fieldset>
+                <legend>Login</legend>
+                <div class="form-group has-success has-feedback">
+                    <label name="account">Account</label>
+                    <input type="text"
+                           name="account"
+                           ng-model="user.account"
+                           class="form-control"
+                           placeholder="Enter account">
+                </div>
+
+                <div class="form-group">
+                    <label name="password">Password</label>
+                    <input type="password"
+                           name="password"
+                           ng-model="user.password"
+                           class="form-control"
+                           placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                    <label>Remember Me</label>
+                    <ui-switch
+                            ng-model='user.rememberMe'></ui-switch>
+                </div>
+            </fieldset>
+            <hr>
+
+            <button class="btn btn-primary btn-block"
+            ng-disabled="(!myform.account.$dirty)&&myform.account.$valid">
+                登录
+            </button>
+            <div ui-content-for="navbarAction">
+                <a class='btn' ng-click='login(user)'><i class="fa fa-user"></i>登录</a>
+            </div>
+        </form>
+    </div>
+</div>-->
+
+<div ui-content-for="title"><span>信息系统登录</span></div><div class="scrollable"><div class="scrollable-content section"><div ng-show="notice.show" class="alert {{notice.type}}"><a ng-click="showMsg()" data-dismiss="alert" class="close">&times;</a>{{notice.msg}}</div><form role="form" ng-submit="login(user)" name="myform"><fieldset><legend>Login</legend><div class="form-group has-success has-feedback"><label name="account">Account</label><input type="text" name="account" ng-model="user.account" placeholder="Enter account" class="form-control"/></div><div class="form-group"><label name="password">Password</label><input type="password" name="password" ng-model="user.password" placeholder="Password" class="form-control"/></div></fieldset><button ng-disabled="(!myform.account.$dirty)&amp;&amp;myform.account.$valid" class="btn btn-primary btn-block">登录</button><div ui-content-for="navbarAction"><a ng-click="login(user)" class="btn"><i class="fa fa-user"></i>登录</a></div></form></div></div>

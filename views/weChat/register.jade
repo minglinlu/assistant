@@ -1,0 +1,40 @@
+div(ui-content-for="title")
+    span 微信号绑定
+.scrollable
+    .scrollable-content.section
+        div(class='alert {{notice.type}}',ng-show='notice.show')
+            a.close(ng-click='showMsg()', data-dismiss='alert') &times;
+            |{{notice.msg}}
+        form(role='form', ng-submit='submitRG(user)', name="myform")
+            fieldset
+                .form-group.has-feedback
+                    label(name='account') 账号
+                    input.form-control(type='text',
+                    name='account',
+                    ng-model='user.account',
+                    placeholder="请输入账号",
+                    required)
+                .form-group
+                    label(name='password') 密码
+                    input.form-control(type='password',
+                    name='password',
+                    ng-model='user.password',
+                    placeholder='请输入密码',
+                    ng-minlength='5',
+                    ng-focus='npfocus=true',
+                    ng-blur='npfocus=false',
+                    required)
+                    .help-block(ng-show='myform.password.$error.minlength&&!npfocus')
+                        span.text-danger 密码必须大于或等于5位
+                .form-group
+                    label(name='wechatID') 微信号
+                    input.form-control(type='text',
+                    name='wechatID',
+                    ng-model='user.wechatID',
+                    placeholder='请输入微信号',
+                    required)
+            button.btn.btn-primary.btn-block(ng-disabled='myform.$invalid') {{submiting}}
+            div(ui-content-for='navbarAction')
+                a.btn(ng-click='login(user)')
+                    i.fa.fa-user
+                    |提交

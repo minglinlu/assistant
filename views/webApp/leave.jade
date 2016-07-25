@@ -1,0 +1,69 @@
+div(ui-content-for='title') 请假信息
+.scrollable
+    .scrollable-content.section
+        table.table.table-strips
+            thead
+                th.text-center 创建时间
+                th.text-center 状态
+                th.text-center
+            tbody(ng-init='strips=[]')
+                tr(ng-repeat-start='x in strips' )
+                    td.text-center {{x.createdTime*1000|date:'yyyy/MM/dd HH:mm'}}
+                    td.text-center {{x.submitResult|leaveFormat}}
+                    td.text-center
+                        .dropdown
+                            a.btn.dropdown-toggle.btn-default.btn-min-caret(type='button',ng-click='toggleMenu($event)')
+                                span.caret
+                tr.self-hide(ng-repeat-end)
+                    td(colspan=3)
+                        button(ng-click='showLeave(x)').btn.btn-block.btn-success 详细信息
+                        button(ng-show='x.submitResult=="0"'
+                        ng-click='editLeave(x)').btn.btn-block.btn-info 编辑请假条
+                        button(ng-show='x.submitResult=="0"'
+                        ng-click='delLeave(x)' ).btn.btn-block.btn-danger 删除请假条
+
+
+div(ui-content-for='modals' ng-controller='UserInfo')
+    .modal(ui-if='leaveInfo' ui-state='leaveInfo')
+        .modal-backdrop.in
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    buttion.close(ui-turn-off='leaveInfo') &times;
+                    h4.modal-title
+                .modal-body
+                    table.table.table-bordered.table-condensed.table-striped.table-responsive(style="word-break:break-all; word-wrap:break-all;")
+                        tbody
+                            tr
+                                th 姓名
+                                td {{UserInfo.nickname}}
+                                th 学号
+                                td {{UserInfo.sid}}
+                            tr
+                                th 专业
+                                td {{UserInfo.department}}
+                                th 班级
+                                td {{UserInfo.class}}
+                            tr
+                                th 审批结果
+                                td(colspan=3) {{moduleData.submitResult|leaveFormat}}
+                            tr
+                                th 创建时间
+                                td(colspan=3) {{moduleData.createdTime*1000|date:'yyyy/MM/dd HH:mm'}}
+                            tr
+                                th 开始时间
+                                td(colspan=3) {{moduleData.leaveTime.from*1000|date:'yyyy/MM/dd HH:mm'}}
+                            tr
+                                th 结束时间
+                                td(colspan=3) {{moduleData.leaveTime.to*1000|date:'yyyy/MM/dd HH:mm'}}
+                    table.table.table-bordered(style="word-break:break-all; word-wrap:break-all;")
+                        tr
+                            th 请假事由
+                            td(colspan=5) {{moduleData.leaveReason}}
+                        tr
+                            th 审批说明     {{moduleData.submitRemark}}
+                            td(colspan=3)
+                .modal-footer
+                    button.btn.btn-default.btn-info(ui-turn-off="leaveInfo") 关闭
+
+

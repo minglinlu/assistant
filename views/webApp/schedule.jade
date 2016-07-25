@@ -1,0 +1,34 @@
+-var week={'mon':'周一','tue':'周二','wed':'周三','thu':'周四','fri':'周五'};
+-var no = {'first':'第一节','second':'第二节','third':'第三节','fourth':'第四节','fifth':'第五节','sixth':'第六节','seventh':'第七节'}
+div(ui-content-for="title")
+    span 课程表
+.scrollable
+    .scrollable-header.section
+        ui-state#activeTab(default='"mon"')
+        ul.nav.nav-tabs
+            -each val,key in week
+                li(ui-class='{active: activeTab =="'+ key +'"}')
+                    a(ui-set='{"activeTab":"'+key+'"}') #{val}
+    .scrollable-content.section
+        -each val,key in week
+            div(ui-if='activeTab=="#{key}"')
+                    table.table.table-bordered.table-striped.table-hover
+                        thead
+                            th.col-xs-3.text-center 节
+                            th.text-center 课程
+                        tbody
+                            -each nVal,nKey in no
+                                tr.text-center
+                                    td #{nVal}
+                                    td(ng-click='showInput($event)')
+                                        p {{UserInfo.curriculum.#{nKey}.#{key}}}
+                                        input(style='display:none',
+                                        ng-blur='hideInput($event)',
+                                        ng-model='UserInfo.curriculum.#{nKey}.#{key}')
+        div(class='alert {{notice.type}}',ng-show='notice.show')
+            a.close(ng-click='showMsg()', data-dismiss='alert') &times;
+            | {{notice.msg}}
+        button.btn.btn-primary.btn-block(ng-init='BtnShow=false;submiting="保存修改";',
+        ng-show='BtnShow',
+        ng-click='submitSchedule(UserInfo)') {{submiting}}
+

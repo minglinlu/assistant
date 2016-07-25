@@ -1,0 +1,27 @@
+h1.scrollable-header.app-name 辅导员网上工作室
+.scrollable-content(ui-yield-to='sidebar' ui-turn-off='uiSidebarLeft')
+    .list-group(ui-turn-off='uiSidebarLeft')
+        a.list-group-item(href='#/studentManage')
+            i.fa.fa-user
+            |   学生管理
+            i.fa.fa-chevron-right.pull-right
+        a.list-group-item(href='#/classManage')
+            i.fa.fa-user
+            |   班级管理
+            i.fa.fa-chevron-right.pull-right
+        a.list-group-item(href='#/leaveManage')
+            i.fa.fa-user
+            |   假条审批
+            i.fa.fa-chevron-right.pull-right
+        a.list-group-item(href='#/')
+            i.fa.fa-gear
+            |   教师设置
+            i.fa.fa-chevron-right.pull-right
+        a.list-group-item(href='#/changepwd')
+            i.fa.fa-lock
+            |   密码修改
+            i.fa.fa-chevron-right.pull-right
+        a.list-group-item.list-group-item-danger(href='/logout')
+            i.fa.fa-power-off
+            |   退出
+            i.fa.fa-chevron-right.pull-right

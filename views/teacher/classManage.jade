@@ -1,0 +1,39 @@
+div(ui-content-for='title')
+    span 班级管理
+div(ui-content-for='uiSidebarLeft')
+    .btn.sidebar-toggle(ui-toggle='uiSidebarLeft')
+        i.fa.fa-bars
+.scrollable
+    .scrollable-header.section(style='padding:2px')
+        .input-group
+            .input-group-btn
+                button.btn.btn-info.btn-block.dropdown-toggle(type='button'
+                 style='border-radius: 7px;' ui-toggle='dropMenu') {{typename[query.type]}}
+                    span.caret
+                ul.dropdown-menu(ui-if='dropMenu' ui-state='dropMenu' ui-turn-off='dropMenu')
+                    li(ng-repeat="(key,val) in typename"
+                    style='border-bottom: solid 0.5px rgb(221, 221, 221);' ng-hide='key=="default"')
+                        a(ng-click='query.type=key') {{val}}
+    .scrollable-content.section
+        table.table.table-strips
+            thead
+                th.text-center 班级
+                th.text-center 辅导员
+                th.text-center 管理班级
+            tbody
+                tr(ng-repeat='item in pageItems[currentPage]')
+                    td.text-center {{item.name}}
+                    td.text-center {{item.counselor?userName[item.counselor]:'无'}}
+                    td.text-center
+                        .btn.btn-block(ng-class='item.counselor?"btn-success":"btn-info"'
+                            ng-hide='item.counselor&&item.counselor!=selfId'
+                            ng-click='manageClass(item)') {{item.counselor?'取消管理':'管理班级'}}
+                        p(ng-show='item.counselor&&item.counselor!=selfId') 已有辅导员
+    .scrollable-footer.section
+        nav
+            ul.pager
+                li(ng-class='{disabled:currentPage==0}')
+                    a(ng-click='prevPage()') 上一页
+                span {{currentPage+1}}/{{pageItems.length+(pageItems.length==0?1:0)}}
+                li(ng-class='{disabled:currentPage==pageItems.length-1}')
+                    a(ng-click='nextPage()') 下一页

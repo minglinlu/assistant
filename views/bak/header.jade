@@ -1,0 +1,12 @@
+doctype html
+html(lang='en')
+    head
+        block head
+            meta(charset='utf-8')
+            title #{title}
+            //Bootstrap
+            link(href='http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css' rel='stylesheet' media="screen")
+    body(screen_capture_injected='true')
+        block content
+        script(src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js')
+        script(src='http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.js')
